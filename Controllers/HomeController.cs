@@ -32,6 +32,11 @@ namespace MovieCollection_413_1_ZachDaniels.Controllers
         [HttpPost]
         public IActionResult AddMovie(AddMovie model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             TempStorage.NewMovies(model);
             return View("AddConfirmation", model);
         }
